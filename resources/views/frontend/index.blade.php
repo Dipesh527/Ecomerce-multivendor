@@ -47,27 +47,36 @@
     <div class="container">
         <div class="row">
             @foreach ($products as $product)
-            <div class="col-lg-4">
-                <div class="item">
-                    <div class="thumb">
-                        <div class="hover-content">
-                            <ul>
-                                <li><a href="{{ url('product_detail',$product->id) }}"><i class="fa fa-eye"></i></a></li>
-                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
+   
+                <div class="col-lg-4">
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="{{ url('product_detail',$product->id) }}"><i class="fa fa-eye"></i></a>
+
+                                    <form action="{{ url('cart/create') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="number" name="quantity" min="1" value="1" width="2px">
+                                        <button  type="submit" class="btn btn-primary btn-sm" style="color: black">Add Cart</button>
+
+                                    </form>
+                                </li>
+                                </ul>
+                            </div>
+                            <img src="{{ $product->photo }}" alt="">
                         </div>
-                        <img src="{{ $product->photo }}" alt="">
-                    </div>
-                    <div class="down-content">
-                        <h4>{{ $product->title }}</h4>
-                        <span>{{ $product->price }}</span>
-                        <p>
-                            {{ $product->description }}
-                        </p>
+                        <div class="down-content">
+                            <h4>{{ $product->title }}</h4>
+                            <span>{{ $product->price }}</span>
+                            <p>
+                                {{ $product->description }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+    
   
             @endforeach
 
@@ -107,7 +116,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-heading">
-                        <h2>Kid's Latest</h2>
+                        <h2>Kids Latest</h2>
                         <span>Details to details is what makes Hexashop different from the other themes.</span>
                     </div>
                 </div>
@@ -410,6 +419,8 @@
 
 @include('frontend.layouts.footer')
 @include('frontend.layouts.script')
+
+
 
     
 

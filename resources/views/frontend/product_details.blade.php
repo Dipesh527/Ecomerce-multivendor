@@ -51,13 +51,6 @@
             <div class="right-content">
                 <h4>{{ $product->title }}</h4>
                 <span class="price">{{ $product->price }}</span>
-                <ul class="stars">
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                </ul>
                 <span>{{ $product->description }}</span>
                 <div class="quote">
                     <i class="fa fa-quote-left"></i><p>{{ $product->size }}</p>
@@ -73,8 +66,7 @@
                     </div>
                 </div>
                 <div class="total">
-                    <h4>Total: $210.00</h4>
-                    <div class="main-border-button"><a href="#">Add To Cart</a></div>
+                    <div ><a href="#" data-quantity="1" data-product-id="{{ $product->id }}"  class="add_to_cart" id="add_to_cart{{ $product->id }}" type="button" >Add To Cart</a></div>
                 </div>
             </div>
         </div>
@@ -112,6 +104,9 @@
     
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
+    {{--  sweetaert  --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <script>
 
@@ -128,6 +123,48 @@
                 
             });
         });
+
+    </script>
+    <script>
+        $(document).on('click','.add_to_cart',function(e){
+            e.preventDefault();
+            var product_id= $(this).data('product-id');
+
+            var product_qty= $(this).data('quantity');
+
+            var token = "{{ csrf_token() }}";
+            var path = "{{ route('cart.store') }}";
+            $.ajax(
+                {
+                    url: path,
+                    type: "POST",
+                    datatype : "JSON",
+                    data:{
+                        product_id: product_id,
+                        product_qty: product_qty,
+                        _token:token,
+                    },
+                    beforeSend:function(){
+                        $('#add_to_cart'+ product_id).html('<i class="fa fa-spinner fa-spin"></i>Loading..');
+                    },
+                    comlete:function(){
+                        $('#add_to_cart'+ product_id).html('<i class="fa fa-cart-plus"></i>Add Cart..');
+
+                    },
+                    success:function(data){
+                        console.log(data);
+                        if(data['status']){
+                            swal({
+                                title: "Good job!",
+                                text: data['message'],
+                                icon: "success",
+                                button: "Aww yiss!",
+                              });
+                        }
+
+                    } 
+                });
+        })
 
     </script>
 

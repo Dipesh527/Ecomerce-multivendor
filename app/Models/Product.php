@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    public static function getProductByCart($id)
+    {
+        return self::where('id',$id)->get()->toArray();
+    }
 }

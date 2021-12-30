@@ -14,6 +14,10 @@ class AdminController extends Controller
         return view('admin.main');
 
         } 
+        elseif(Auth::user()->role=='user')
+        {
+            return view('frontend.index');
+        }
         else 
         {
             return redirect('/');

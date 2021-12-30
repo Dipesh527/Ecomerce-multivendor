@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -49,7 +50,11 @@ Route::resource('/products',ProductController::class);
 // category
 Route::get('products-category/{slug}',[HomeController::class,'product_category']);
 // brands
-
+// cart
+Route::post('cart/create/',[CartController::class,'store'])
+    ->name('cart.creata')->middleware('auth');
+Route::post('cart/store',[CartController::class,'cartCreate'])->name('cart.store');
+Route::get('cartlist',[CartController::class,'cartlist'])->name('caetlist');
 
 // product
 

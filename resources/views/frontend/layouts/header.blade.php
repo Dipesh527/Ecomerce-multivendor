@@ -32,9 +32,24 @@
                                 <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
                             </ul>
                         </li>
-                        <li class="scroll-to-section"><a href="#explore">Explore</a></li>
-                        <li class="scroll-to-section"><a href="login">Login</a></li>
-                        <li class="scroll-to-section"><a href="register">Register</a></li>
+                        <li class="scroll-to-section">
+                                @auth
+                                
+                                <li class="scroll-to-section"><a href="{{ url('cartlist') }}"> Cart {{ \Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count() }}</a></li>
+    
+                            <li class="scroll-to-section"> <a href="{{ url('/home') }}">Home</a></li>
+                                @else
+    
+                                <li class="scroll-to-section"><a href="login">Login</a></li>
+    
+            
+                                <li class="scroll-to-section"><a href="register">Register</a></li>
+    
+                                @endauth
+            
+                        </li>
+   
+                        
                     </ul>        
                     <a class='menu-trigger'>
                         <span>Menu</span>
