@@ -1,36 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zxx">
     @include('frontend.layouts.head')
-    
-    <body>
-    
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>  
-    <!-- ***** Preloader End ***** -->
-    
-    
-    <!-- ***** Header Area Start ***** -->
+<body class="js">
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- End Preloader -->
+
+
+	<!-- Header -->
     @include('frontend.layouts.header')
-    <!-- ***** Header Area End ***** -->
+	<!--/ End Header -->
 
     @yield('content')
 
-
+	<!-- Start Footer Area -->
 @include('frontend.layouts.footer')
-@include('frontend.layouts.script')
+	<!-- /End Footer Area -->
 
-
-
-    
-
-
-
-  </body>
+	@include('frontend.layouts.script')
+</body>
 </html>

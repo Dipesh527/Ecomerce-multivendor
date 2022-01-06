@@ -24,7 +24,8 @@ class HomeController extends Controller
     {
         $banners = Banner::all();
         $categories = Categories::where('is_parent',1)->orderBy('id','desc')->limit(3)->get();
-        return view('frontend.index',compact(['banners','categories']));
+        $products = Product::where('status','active')->orderBy('id','desc')->get();
+        return view('frontend.index',compact(['banners','categories','products']));
     }
     public function product_category($slug)
     {

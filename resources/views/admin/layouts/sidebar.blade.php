@@ -52,18 +52,34 @@
         <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">edit Category</a></li>
       </ul>
     </div>
+
     <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-      <span class="menu-icon">
-        <i class="mdi mdi-laptop"></i>
-      </span>
-      <span class="menu-title">Product Management</span>
-      <i class="menu-arrow"></i>
-    </a>
-    <div class="collapse" id="ui-basic">
-      <ul class="nav flex-column sub-menu">
-        <li class="nav-item"> <a class="nav-link" href="{{ url('/products/create') }}">Create Category</a></li>
-        <li class="nav-item"> <a class="nav-link" href="{{ url('/products') }}">All Brands</a></li>
-        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">edit Category</a></li>
-      </ul>
-    </div>
-  </li>
+        <span class="menu-icon">
+          <i class="mdi mdi-laptop"></i>
+        </span>
+        <span class="menu-title">Product Management</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{ url('/products/create') }}">Create Category</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ url('/products') }}">All Brands</a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">edit Category</a></li>
+        </ul>
+      </div>
+    </li>
+    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-icon">
+          <i class="mdi mdi-laptop"></i>
+        </span>
+        <span class="menu-title">Coupon Management</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="{{ url('/coupon/create') }}">Create Coupon</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{ url('/coupon') }}">All Coupons</a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">edit Category</a></li>
+        </ul>
+      </div>
+    </li>

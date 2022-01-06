@@ -5,6 +5,8 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
@@ -41,8 +43,9 @@ Route::resource('categories',CategoryController::class);
 Route::resource('/brands',BrandController::class);
 Route::resource('/products',ProductController::class);
 
+Route::resource('/coupon',CouponController::class);
 
-    
+
 });
 
 
@@ -52,9 +55,21 @@ Route::get('products-category/{slug}',[HomeController::class,'product_category']
 // brands
 // cart
 Route::post('cart/create/',[CartController::class,'store'])
-    ->name('cart.creata')->middleware('auth');
+    ->name('cart.create')->middleware('auth');
+
 Route::post('cart/store',[CartController::class,'cartCreate'])->name('cart.store');
-Route::get('cartlist',[CartController::class,'cartlist'])->name('caetlist');
+Route::post('cart/delete',[CartController::class,'cartDelete'])->name('cart.delete');
+
+Route::get('cart',[CartController::class,'cart'])->name('cart');
+Route::get('cart/delete/{id}',[CartController::class,'cartDelete'])->name('cart.delete');
+// coupon section
+
+Route::post('coupon/add',[CartController::class, 'couponAdd'])->name('coupon.add');
+
+// checkout
+
+Route::get('checkout',[CheckoutController::class,'checkout'])->name('checkout');
+
 
 // product
 
